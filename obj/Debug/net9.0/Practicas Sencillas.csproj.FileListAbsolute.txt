@@ -12,3 +12,4 @@ E:\Programacion\Proyectos\.Net Projects\Practicas Sencillas\obj\Debug\net9.0\ref
 E:\Programacion\Proyectos\.Net Projects\Practicas Sencillas\obj\Debug\net9.0\Practicas Sencillas.pdb
 E:\Programacion\Proyectos\.Net Projects\Practicas Sencillas\obj\Debug\net9.0\Practicas Sencillas.genruntimeconfig.cache
 E:\Programacion\Proyectos\.Net Projects\Practicas Sencillas\obj\Debug\net9.0\ref\Practicas Sencillas.dll
+E:\Programacion\Proyectos\.Net Projects\Practicas Sencillas\obj\Debug\net9.0\Practicas Sencillas.sourcelink.json

@@ -1,31 +1,92 @@
-﻿
+﻿using System.Numerics;
+
+ListNode nodes = new ListNode(9);
+
+ListNode nodes2 = new ListNode(1,
+                new ListNode(9,
+                new ListNode(9,
+                new ListNode(9,
+                new ListNode(9,
+                new ListNode(9,
+                new ListNode(9,
+                new ListNode(9,
+                new ListNode(9,
+                new ListNode(9))))))))));
 
 
-int[] nums = [0,4,3,0];
-int target = 0;
-int[] resultados = TwoSum(nums, target);
+Solution solution = new Solution();
+ListNode nodeFinal = solution.AddTwoNumbers(nodes, nodes2);
 
-for (int i = 0; i < resultados.Length; i++)
+while (nodeFinal != null)
 {
-    Console.WriteLine(resultados[i]);
+    Console.WriteLine(nodeFinal.val);
+    nodeFinal = nodeFinal.next;
+}
+public class ListNode
+{
+    public int val;
+    public ListNode next;
+    public ListNode(int val = 0, ListNode next = null)
+    {
+        this.val = val;
+        this.next = next;
+    }
 }
 
-int[] TwoSum(int[] nums, int target)
+public class Solution
 {
-    for (int i = 0; i < nums.Length; i++)
+    public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
     {
+        string valores = "";
+        string valores2 = "";
 
-        for (int j = i + 1; j < nums.Length; j++)
+        while (l1 != null)
         {
-            int suma = nums[i] + nums[j];
+            valores = valores + l1.val.ToString();
+            l1 = l1.next;
 
-            if (suma == target)
-            {
-                int[] nuevoArray = { i, j };
-                return nuevoArray;
-            }
+
+        }
+        while (l2 != null)
+        {
+            valores2 = valores2 + l2.val.ToString();
+            l2 = l2.next;
+        }
+
+        valores = voltearCadena(valores);
+        valores2 = voltearCadena(valores2);
+        BigInteger numeros = BigInteger.Parse(valores);
+        BigInteger numeros2 = BigInteger.Parse(valores2);
+        BigInteger numerosSuma = numeros + numeros2;
+        int[] digitos = numerosSuma.ToString().Select(c => c - '0').ToArray();
+        List<int> lista = digitos.ToList();
+        return enlazarNodo(lista);
+    }
+
+
+    ListNode enlazarNodo(List<int> lista)
+    {
+        int numero = lista[lista.Count - 1];
+        lista.RemoveAt(lista.Count - 1);
+        if (lista.Count != 0)
+        {
+            return new ListNode(numero, enlazarNodo(lista));
+
+        }
+        else
+        {
+            return new ListNode(numero);
         }
     }
-    return [];
-}
 
+    string voltearCadena(string cadena)
+    {
+        string nuevo = "";
+        for (int i = cadena.Length - 1; i >= 0; i--)
+        {
+            nuevo += cadena[i];
+        }
+        return nuevo;
+    }
+
+}
